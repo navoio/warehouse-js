@@ -1,0 +1,14 @@
+{
+  "name": "@navoio/warehouse",
+  "version": "0.5.0",
+  "description": "JavaScript and Node client for accessing Navo Warehouse data.",
+  "author": "Navo",
+  "license": "MIT",
+  "repository": "https://github.com/navoio/warehouse-js",
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}
