@@ -1,8 +1,13 @@
-
 language: node_js
 node_js:
-  - "node"
+- node
 cache: yarn
 script:
-  - npm run
-
+- npm run
+deploy:
+  provider: npm
+  email: "dominic@fotijr.com"
+  api_key:
+    secure: PMVt18r5SKZgStt5hJckIsyt06UZhoyAGAzlE+yNLithoiPsfXjbmDlTOAKTznv6CU/x0dCoTYWlsAFTCxOCEN2poDfUvU6UV37uXnxpZiZazDMzfq5y4Mp4uyRekawG/AATBmPG2pjZLr1q3N8TY04rDK4JVkzPCe+3qleqDCfFdCVrhDkf5hTuZCdaIF2AS72VWlFKn1a0JVWU8M6HqQORaEhY2KluCssvUzcd9RVuvQ3mgz882EPnasDRmopHth7hbpO873wlTFPfqJNf97jHEgPL/3CAyJHpS6mIdhTttSgplei3pv3m1O+8oRMzBs9QJfjgP8R2aKvgA5YOR4bbfDcepsJKBixitVVz6K3JgU8JtW5rOGwkjxb0cVHplCBJGTEzMmxvWdv587/XWcKc1dkGEn0k3P1o74oZrrTA2oM/KHyWk5wd7zKdd7AANG4qjELzShHVfFlDC3/SspcPg7z1nGNLvVD8jdhpPpm1j9o48SjVNLj79GxpA8PRsRBviIan+skKw6jtAWnQAOYyfwlTdipst1LqlPhCmPKIouVUKqjh2lvlDq3XRuTFbgF9PnfoBAejm3qSm77YXEEieKRqkYTG0QETvVYZJ9D6XXcTLlkyVkGlRJMuf8V5DiL42TB0Z31W3JMgB5mPoRUxakIc+t0OuBRDY4No3PU=
+  on:
+    tags: true

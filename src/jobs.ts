@@ -10,6 +10,9 @@ export default class JobsClient {
         this.baseClient = client;
     }
 
+    /**
+     * Get all active Navo jobs.
+     */
     getAll() : Promise<any[]> {
         return this.baseClient.authorizeIfNeeded(
             this.baseClient.token, 
@@ -25,6 +28,10 @@ export default class JobsClient {
         });
     }
 
+    /**
+     * Get Navo job by id.
+     * @param id Navo job id
+     */
     get(id: number) : Promise<any> {
         return this.baseClient.authorizeIfNeeded(
             this.baseClient.token, 

@@ -19,6 +19,11 @@ export default class NavoClient {
         this.jobs = new JobsClient(this.axios, this);
     }
 
+    /**
+     * Authorize Navo API user
+     * @param username 
+     * @param password 
+     */
     authorize(username: string, password: string) {
         const self: NavoClient = this;
         return this.axios.post('api/token', {
