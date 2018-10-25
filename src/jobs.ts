@@ -1,5 +1,6 @@
 import { AxiosInstance } from "axios";
 import NavoClient from ".";
+import { Job } from "./job";
 
 export default class JobsClient {
     baseClient: NavoClient;
@@ -13,18 +14,15 @@ export default class JobsClient {
     /**
      * Get all active Navo jobs.
      */
-    getAll() : Promise<any[]> {
-        return this.baseClient.authorizeIfNeeded(
-            this.baseClient.token, 
-            this.baseClient.username, 
-            this.baseClient.password
+    getAll(): Promise<Job[]> {
+        const client = this;
+        return client.baseClient.authorizeIfNeeded(
+            client.baseClient.token,
+            client.baseClient.username,
+            client.baseClient.password
         ).then(token => {
-            return this.axios.get('api/jobs', {
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-            .then(response => response.data);
+            return client.axios.get('api/jobs', client.buildAuthHeader(token))
+                .then(response => response.data);
         });
     }
 
@@ -32,18 +30,22 @@ export default class JobsClient {
      * Get Navo job by id.
      * @param id Navo job id
      */
-    get(id: number) : Promise<any> {
-        return this.baseClient.authorizeIfNeeded(
-            this.baseClient.token, 
-            this.baseClient.username, 
-            this.baseClient.password
+    get(id: number): Promise<Job> {
+        const client = this;
+        return client.baseClient.authorizeIfNeeded(
+            client.baseClient.token,
+            client.baseClient.username,
+            client.baseClient.password
         ).then(token => {
-            return this.axios.get(`api/jobs/${id}`, {
-                headers: {
-                    'Authorization': 'Bearer ' + token
-                }
-            })
-            .then(response => response.data);
+            return client.axios
+                .get(`api/jobs/${id}`, client.buildAuthHeader(token))
+                .then(response => response.data);
         });
+    }
+
+    private buildAuthHeader(token: string) {
+        return {
+            headers: { 'Authorization': 'Bearer ' + token }
+        };
     }
 }
