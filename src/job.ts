@@ -1,6 +1,6 @@
-enum JobStatus{
+enum JobStatus {
     Ordered,
-    Started, 
+    Started,
     Complete,
     Cancelled
 }
@@ -13,4 +13,4 @@ interface Job {
     storedPartCount: number;
 }
 
-export { Job, JobStatus }
+export { Job, JobStatus };

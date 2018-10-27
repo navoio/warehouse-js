@@ -1,9 +1,9 @@
-import { AxiosInstance } from "axios";
-import NavoClient from ".";
-import { Job } from "./job";
+import { AxiosInstance } from 'axios';
+import NavoClient from '.';
+import { Job } from './job';
 
 export default class JobsClient {
-    baseClient: NavoClient;
+    public baseClient: NavoClient;
     private axios: AxiosInstance;
 
     constructor(axios: AxiosInstance, client: NavoClient) {
@@ -14,7 +14,7 @@ export default class JobsClient {
     /**
      * Get all active Navo jobs.
      */
-    async getAll(): Promise<Job[]> {
+    public async getAll(): Promise<Job[]> {
         const client = this;
         return (await client.baseClient.authorizeIfNeeded())
             .axios
@@ -26,7 +26,7 @@ export default class JobsClient {
      * Get Navo job by id.
      * @param id Navo job id
      */
-    async get(id: number): Promise<Job> {
+    public async get(id: number): Promise<Job> {
         const client = this;
         return (await client.baseClient.authorizeIfNeeded())
             .axios
@@ -36,7 +36,7 @@ export default class JobsClient {
 
     private buildAuthHeader(token: string) {
         return {
-            headers: { 'Authorization': 'Bearer ' + token }
+            headers: { Authorization: 'Bearer ' + token }
         };
     }
 }

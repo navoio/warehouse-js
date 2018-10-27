@@ -1,9 +1,8 @@
 import NavoClient from '../src';
-import { Job, JobStatus } from '../src/job';
 import nock from 'nock';
 const apiUrl = 'http://localhost:59626';
-const username = 'TEST',
-    password = 'TEST123';
+const username = 'TESTUSER',
+    password = 'TESTUSER-PASSWORD';
 
 function getJob(){
     let client = new NavoClient(apiUrl, username, password);
