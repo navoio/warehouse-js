@@ -30,7 +30,7 @@ export default class NavoClient {
             username,
             password
         })
-        .then(function(response) {
+        .then(response => {
             const token: string = response.data.token;
             client.token = token;
             return client;

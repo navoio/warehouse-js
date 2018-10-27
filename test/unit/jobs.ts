@@ -13,7 +13,7 @@ describe('Navo Jobs Client', () => {
         const client = new NavoClient(apiUrl, 'test-user', 'fake-password');
         return client.jobs.get(1)
             .then(job => {
-                expect(!!job).to.be.true;
+                return expect(!!job).to.be.true;
             });
     });
 

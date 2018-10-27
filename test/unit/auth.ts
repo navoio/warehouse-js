@@ -15,7 +15,7 @@ describe('Navo Client', () => {
         const client = new NavoClient(apiUrl, 'test-user', 'fake-password');
         client.jobs.get(1)
             .then(() => {
-                expect(!!client.token).to.be.true;
+                return expect(!!client.token).to.be.true;
             });
     });
 });

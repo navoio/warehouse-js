@@ -8,7 +8,7 @@ describe('NavoClient authorize()', () => {
         const client = new NavoClient(apiUrl, 'TEST', 'TEST123');
         return client.authorize('TEST', 'TEST123')
             .then(_ => {
-                expect(!!client.token).to.be.true;
+                return expect(!!client.token).to.be.true;
             });
     });
 });
