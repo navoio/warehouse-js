@@ -8,7 +8,7 @@ export default class NavoClient {
     password: string;
     token: string;
     jobs: JobsClient;
-    private axios: AxiosInstance;
+    axios: AxiosInstance;
 
     constructor(url: string, username: string, password: string) {
         this.url = url;
@@ -24,21 +24,21 @@ export default class NavoClient {
      * @param username 
      * @param password 
      */
-    authorize(username: string, password: string) {
-        const self: NavoClient = this;
-        return this.axios.post('api/token', {
+    authorize(username: string, password: string): Promise<NavoClient> {
+        const client: NavoClient = this;
+        return client.axios.post('api/token', {
             username: username,
             password: password
         })
         .then(function (response) {
             const token: string = response.data.token;
-            self.token = token;
-            return token;
+            client.token = token;
+            return client;
         });
     }
 
-    authorizeIfNeeded(token: string, username: string, password: string) {
-        if (token) return Promise.resolve(token);
-        return this.authorize(username, password);
+    authorizeIfNeeded() {
+        if (this.token) return Promise.resolve(this);
+        return this.authorize(this.username, this.password);
     }
 }

@@ -13,4 +13,4 @@ interface Job {
     storedPartCount: number;
 }
 
-export { Job }
+export { Job, JobStatus }
