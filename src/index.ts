@@ -1,14 +1,14 @@
+import { AxiosInstance } from 'axios';
 import base from './axios-base';
 import JobsClient from './jobs';
-import { AxiosInstance } from 'axios';
 
 export default class NavoClient {
-    url: string;
-    username: string;
-    password: string;
-    token: string;
-    jobs: JobsClient;
-    private axios: AxiosInstance;
+    public url: string;
+    public username: string;
+    public password: string;
+    public token: string;
+    public jobs: JobsClient;
+    public axios: AxiosInstance;
 
     constructor(url: string, username: string, password: string) {
         this.url = url;
@@ -21,24 +21,24 @@ export default class NavoClient {
 
     /**
      * Authorize Navo API user
-     * @param username 
-     * @param password 
+     * @param username
+     * @param password
      */
-    authorize(username: string, password: string) {
-        const self: NavoClient = this;
-        return this.axios.post('api/token', {
-            username: username,
-            password: password
+    public authorize(username: string, password: string): Promise<NavoClient> {
+        const client: NavoClient = this;
+        return client.axios.post('api/token', {
+            username,
+            password
         })
-        .then(function (response) {
+        .then(response => {
             const token: string = response.data.token;
-            self.token = token;
-            return token;
+            client.token = token;
+            return client;
         });
     }
 
-    authorizeIfNeeded(token: string, username: string, password: string) {
-        if (token) return Promise.resolve(token);
-        return this.authorize(username, password);
+    public authorizeIfNeeded() {
+        if (this.token) { return Promise.resolve(this); }
+        return this.authorize(this.username, this.password);
     }
 }

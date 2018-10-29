@@ -3,7 +3,9 @@ node_js:
 - node
 cache: yarn
 script:
-- npm run
+- npm run build
+- npm run lint
+- npm run test
 deploy:
   provider: npm
   email: "dominic@fotijr.com"

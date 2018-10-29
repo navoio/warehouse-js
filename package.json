@@ -6,7 +6,10 @@
   "license": "MIT",
   "repository": "https://github.com/navoio/warehouse-js",
   "scripts": {
-    "test": "mocha \"dist/test/**/*.js\" --reporter spec"
+    "lint": "npx tslint -p tsconfig.json",
+    "build": "npx tsc",
+    "test": "mocha \"dist/test/unit/**/*.js\" --reporter spec",
+    "e2e-test": "mocha \"dist/test/integration/**/*.js\" --reporter spec"
   },
   "files": [
     "dist"
@@ -17,9 +20,13 @@
   "devDependencies": {
     "@types/chai": "^4.1.6",
     "@types/mocha": "^5.2.5",
+    "@types/nock": "^9.3.0",
     "@types/node": "^10.12.0",
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
+    "nock": "^10.0.1",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
     "typescript": "^3.1.3"
   }
 }
