@@ -1,13 +1,13 @@
 import nock from 'nock';
 
 function badPassword(apiUrl: string) {
-    nock(apiUrl)
+    return nock(apiUrl)
         .post('/api/token')
         .reply(400, 'Invalid username or password.');
 }
 
-function successfulAuth(apiUrl: string) {
-    nock(apiUrl)
+function successfulAuth(apiHost: string) {
+    return nock(apiHost)
         .post('/api/token')
         .reply(200, {
             token: 'ryJhbGciOiJIUzI1NiIsInR5cCI6IkpXyCJ9ieyJzdWIiOiJU' +
