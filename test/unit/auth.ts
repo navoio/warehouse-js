@@ -10,7 +10,7 @@ const apiLocation = `${apiDomain}api`;
 
 describe('Navo Client', () => {
     it('should get auth token on demand when constructed with credentials', async () => {
-        authNocks.successfulAuth(apiDomain).log(console.log);
+        authNocks.successfulAuth(apiDomain);
         jobNocks.getJobSuccess(apiDomain);
         const client = new NavoClient(apiLocation, { username: 'test-user', password: 'fake-password' });
         const job = await client.jobs.get(1);

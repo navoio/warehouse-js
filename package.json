@@ -8,12 +8,10 @@
   "scripts": {
     "lint": "npx tslint -p tsconfig.json",
     "build": "npx tsc",
+    "prepare-publish": "cp package.json dist/src/package.json",
     "test": "mocha \"dist/test/unit/**/*.js\" --reporter spec",
     "test:e2e": "mocha \"dist/test/integration/**/*.js\" --reporter spec"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
     "axios": "^0.19.0"
   },

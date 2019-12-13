@@ -20,7 +20,7 @@ export default class NavoClient {
      */
     constructor(url: string, credentials?: { username: string, password: string }) {
         this.url = url;
-        if (credentials){
+        if (credentials) {
             this.username = credentials.username;
             this.password = credentials.password;
         }
