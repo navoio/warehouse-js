@@ -18,7 +18,7 @@ export default class JobsClient {
         const client = this;
         return (await client.baseClient.authorizeIfNeeded())
             .axios
-            .get('api/jobs', client.buildAuthHeader(client.baseClient.token))
+            .get<Job[]>('jobs', client.buildAuthHeader(client.baseClient.token))
             .then(response => response.data);
     }
 
@@ -30,7 +30,7 @@ export default class JobsClient {
         const client = this;
         return (await client.baseClient.authorizeIfNeeded())
             .axios
-            .get(`api/jobs/${id}`, client.buildAuthHeader(client.baseClient.token))
+            .get<Job>(`jobs/${id}`, client.buildAuthHeader(client.baseClient.token))
             .then(response => response.data);
     }
 

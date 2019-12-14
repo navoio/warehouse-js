@@ -1,5 +1,5 @@
 # Navo Warehouse JS Client [![Build Status](https://travis-ci.org/navoio/warehouse-js.svg?branch=master)](https://travis-ci.org/navoio/warehouse-js)
-JavaScript and Node client for accessing Navo Warehouse data.
+JavaScript and Node client for accessing [Navo Warehouse](https://navo.io/products/warehouse/) data.
 
 ## Install
 ```bash
@@ -13,26 +13,20 @@ npm install @navoio/warehouse
 import Navo from '@navoio/warehouse';
 
 // Option 1- pass credentials into constructor
-let client = new Navo(apiUrl, 'username', 'password');
+const client = new Navo(apiUrl, 'username', 'password');
 
 // Option 2- call authorize() manually
-let client = new Navo(apiUrl);
+const client = new Navo(apiUrl);
 client.authorize('username', 'password');
 ```
 
 ## Jobs
 Get all active jobs:
 ```js
-client.jobs.getAll()
-    .then(jobs => {
-        console.log(jobs);
-    });
+const jobs = await client.jobs.getAll();
 ```
 
-Get job by id:
+Get a single job by job id:
 ```js
-client.jobs.get(1)
-    .then(job => {
-        console.log(job);
-    });
+const job = client.jobs.get(1);
 ```

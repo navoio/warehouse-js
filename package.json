@@ -8,25 +8,23 @@
   "scripts": {
     "lint": "npx tslint -p tsconfig.json",
     "build": "npx tsc",
+    "prepare-publish": "cp package.json dist/src/package.json",
     "test": "mocha \"dist/test/unit/**/*.js\" --reporter spec",
-    "e2e-test": "mocha \"dist/test/integration/**/*.js\" --reporter spec"
+    "test:e2e": "mocha \"dist/test/integration/**/*.js\" --reporter spec"
   },
-  "files": [
-    "dist"
-  ],
   "dependencies": {
-    "axios": "^0.18.0"
+    "axios": "^0.19.0"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.6",
-    "@types/mocha": "^5.2.5",
-    "@types/nock": "^9.3.0",
-    "@types/node": "^10.12.0",
+    "@types/chai": "^4.2.7",
+    "@types/mocha": "^5.2.7",
+    "@types/nock": "^11.1.0",
+    "@types/node": "^12.12.17",
     "chai": "^4.2.0",
-    "mocha": "^5.2.0",
-    "nock": "^10.0.1",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.1.3"
+    "mocha": "^6.2.2",
+    "nock": "^11.7.0",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.3"
   }
 }

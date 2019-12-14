@@ -2,6 +2,9 @@ import { AxiosInstance } from 'axios';
 import base from './axios-base';
 import JobsClient from './jobs';
 
+/**
+ * Navo Client for interfacing with a Navo server.
+ */
 export default class NavoClient {
     public url: string;
     public username: string;
@@ -10,10 +13,17 @@ export default class NavoClient {
     public jobs: JobsClient;
     public axios: AxiosInstance;
 
-    constructor(url: string, username: string, password: string) {
+    /**
+     * Navo client constructor
+     * @param url Base path of the Navo API
+     * @param credentials API credentials
+     */
+    constructor(url: string, credentials?: { username: string, password: string }) {
         this.url = url;
-        this.username = username;
-        this.password = password;
+        if (credentials) {
+            this.username = credentials.username;
+            this.password = credentials.password;
+        }
         this.token = '';
         this.axios = base(url);
         this.jobs = new JobsClient(this.axios, this);
@@ -26,15 +36,15 @@ export default class NavoClient {
      */
     public authorize(username: string, password: string): Promise<NavoClient> {
         const client: NavoClient = this;
-        return client.axios.post('api/token', {
+        return client.axios.post('token', {
             username,
             password
         })
-        .then(response => {
-            const token: string = response.data.token;
-            client.token = token;
-            return client;
-        });
+            .then(response => {
+                const token: string = response.data.token;
+                client.token = token;
+                return client;
+            });
     }
 
     public authorizeIfNeeded() {
