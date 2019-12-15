@@ -28,6 +28,6 @@ jobs:
       - run: yarn install --pure-lockfile
       - run: yarn build
       - run: yarn prepare-publish
-      - run: npm publish dist/src
+      - run: npm publish dist/src --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
