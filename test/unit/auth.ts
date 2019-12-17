@@ -15,4 +15,3 @@ describe('Navo Client', () => {
         return expect(client.token).to.be.ok;
     });
 });
-c
