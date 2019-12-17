@@ -3,7 +3,7 @@ import nock from 'nock';
 function badPassword(apiUrl: string) {
     return nock(apiUrl)
         .post('/api/token')
-        .reply(400, 'Invalid username or password.');
+        .reply(400, 'Invalid client ID or private key.');
 }
 
 function successfulAuth(apiHost: string) {
