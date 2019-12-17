@@ -22,5 +22,6 @@ jobs:
         yarn install --pure-lockfile
         yarn build
         yarn test
+        yarn lint
       env:
         CI: true

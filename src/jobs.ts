@@ -1,8 +1,8 @@
 import { AxiosInstance } from 'axios';
-import NavoClient from '.';
+import { NavoClient } from './client';
 import { Job } from './job';
 
-export default class JobsClient {
+export class JobsClient {
     public baseClient: NavoClient;
     private axios: AxiosInstance;
 
